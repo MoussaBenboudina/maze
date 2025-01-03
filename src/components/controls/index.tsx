@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { solveMazeDFS } from "../../utills/dfs";
 import { solveMazeBFS } from "../../utills/bfs";
 import { solveMazeBestFirst } from "../../utills/bestFS";
@@ -22,7 +22,7 @@ const Controls: React.FC<ControlsProps> = ({ maze, start, end, setMaze }) => {
   const [mazeType, setMazeType] = useState<"empty" | "walls">("empty");
   const [elapsedTime, setElapsedTime] = useState<number>(0);
   const [isSolving, setIsSolving] = useState<boolean>(false);
-  const [intervalId, setIntervalId] = useState(null);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
   const [isInitial, setIsInitial] = useState(true);
 
   const emptyMaze = Array.from({ length: 30 }, () => Array(30).fill(0));
@@ -42,7 +42,7 @@ const Controls: React.FC<ControlsProps> = ({ maze, start, end, setMaze }) => {
     setElapsedTime(0);
     setIsSolving(true);
 
-    const id: number = setInterval(() => {
+    const id = setInterval(() => {
       setElapsedTime(performance.now() - startTime);
     }, 10);
     setIntervalId(id);

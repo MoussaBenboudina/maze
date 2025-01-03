@@ -1,6 +1,3 @@
-// components/MazeLegend.js
-import React from "react";
-
 const MazeLegend = () => {
   return (
     <div className="p-4 text-white text-md w-52">

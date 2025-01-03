@@ -1,4 +1,3 @@
-import React from "react";
 import Cell from "../cell";
 
 type MazeProps = {
@@ -12,7 +11,7 @@ const Maze: React.FC<MazeProps> = ({ maze, start, end }) => {
     <div className="shadow-lg w-fit bg-gray-50 ">
       {maze.map((row, rowIndex) => (
         <div className="flex w-fit" key={rowIndex}>
-          {row.map((cell, colIndex) => (
+          {row.map((_, colIndex) => (
             <Cell
               key={`${rowIndex}-${colIndex}`}
               rowIndex={rowIndex}
